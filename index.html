@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kancelaria Radcy Prawnego Małgorzata Krępeć-Kowalska</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      scroll-behavior: smooth;
+    }
+    /* Efekt przewracania kartki */
+    .slide {
+      transition: transform 1s cubic-bezier(0.7, 0, 0.3, 1);
+      transform-origin: bottom right;
+      opacity: 0;
+      transform: rotateY(-90deg);
+    }
+    .slide.active {
+      opacity: 1;
+      transform: rotateY(0deg);
+    }
+    .slide.exiting {
+      opacity: 0;
+      transform: rotateY(90deg);
+    }
+  </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+  <!-- Navbar -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-white/70 backdrop-blur-md shadow-sm border-b border-gray-200 transition-colors duration-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <h1 class="text-lg font-semibold tracking-tight text-gray-800">Kancelaria Radcy Prawnego<br><span class="text-indigo-700">Małgorzata Krępeć-Kowalska</span></h1>
+      <nav>
+        <button id="menuToggle" class="md:hidden p-2 focus:outline-none">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+        <ul id="menu" class="hidden md:flex gap-6 text-sm font-medium">
+          <li><a href="#o-mnie" class="hover:text-indigo-700 transition">O mnie</a></li>
+          <li><a href="#uslugi" class="hover:text-indigo-700 transition">Usługi</a></li>
+          <li><a href="#opinie" class="hover:text-indigo-700 transition">Opinie</a></li>
+          <li><a href="#kontakt" class="hover:text-indigo-700 transition">Kontakt</a></li>
+        </ul>
+      </nav>
+    </div>
+    <ul id="mobileMenu" class="hidden flex-col bg-white border-t border-gray-200 shadow-md md:hidden">
+      <li><a href="#o-mnie" class="block px-6 py-3 hover:bg-gray-100">O mnie</a></li>
+      <li><a href="#uslugi" class="block px-6 py-3 hover:bg-gray-100">Usługi</a></li>
+      <li><a href="#opinie" class="block px-6 py-3 hover:bg-gray-100">Opinie</a></li>
+      <li><a href="#kontakt" class="block px-6 py-3 hover:bg-gray-100">Kontakt</a></li>
+    </ul>
+  </header>
+
+  <!-- HERO SLIDER -->
+  <section class="relative h-[90vh] overflow-hidden">
+    <div id="slider" class="absolute inset-0">
+      <!-- Slide 1 -->
+      <div class="slide active absolute inset-0 bg-cover bg-center flex flex-col items-center justify-center text-white text-center"
+        style="background-image:url('https://images.unsplash.com/photo-1604328698692-f76ea9498e76?auto=format&fit=crop&w=1600&q=80');">
+        <div class="bg-black/40 p-8 rounded-2xl shadow-lg">
+          <h2 class="text-4xl md:text-5xl font-semibold mb-4">Rozwód bez chaosu</h2>
+          <p class="text-lg mb-6">Pomagam przejść przez trudny etap życia z godnością i spokojem.</p>
+          <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-full text-white font-medium transition">Umów konsultację</a>
+        </div>
+      </div>
+      <!-- Slide 2 -->
+      <div class="slide absolute inset-0 bg-cover bg-center flex flex-col items-center justify-center text-white text-center"
+        style="background-image:url('https://images.unsplash.com/photo-1521790797524-b2497295b8a0?auto=format&fit=crop&w=1600&q=80');">
+        <div class="bg-black/40 p-8 rounded-2xl shadow-lg">
+          <h2 class="text-4xl md:text-5xl font-semibold mb-4">Alimenty i kontakty z dziećmi</h2>
+          <p class="text-lg mb-6">Pomagam uregulować kwestie rodzinne, aby odzyskać równowagę.</p>
+          <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-full text-white font-medium transition">Porozmawiajmy</a>
+        </div>
+      </div>
+      <!-- Slide 3 -->
+      <div class="slide absolute inset-0 bg-cover bg-center flex flex-col items-center justify-center text-white text-center"
+        style="background-image:url('https://images.unsplash.com/photo-1604328699106-cf57d20b6941?auto=format&fit=crop&w=1600&q=80');">
+        <div class="bg-black/40 p-8 rounded-2xl shadow-lg">
+          <h2 class="text-4xl md:text-5xl font-semibold mb-4">Podział majątku i mediacje</h2>
+          <p class="text-lg mb-6">Chronię Twoje prawa i pomagam znaleźć porozumienie.</p>
+          <a href="#kontakt" class="bg-indigo-600 hover:bg-indigo-700 px-6 py-3 rounded-full text-white font-medium transition">Dowiedz się więcej</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- O MNIE -->
+  <section id="o-mnie" class="py-20 bg-white text-center">
+    <div class="max-w-4xl mx-auto px-6">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-800">O mnie</h2>
+      <p class="text-gray-600 leading-relaxed">
+        Nazywam się <strong>Małgorzata Krępeć-Kowalska</strong>. Od lat wspieram moich klientów w sprawach rodzinnych, rozwodowych i majątkowych. 
+        Wierzę, że każda sprawa wymaga nie tylko znajomości prawa, ale i empatii. 
+        Moim celem jest, byś przeszedł przez proces prawny w sposób spokojny, zrozumiały i godny.
+      </p>
+    </div>
+  </section>
+
+  <!-- USŁUGI -->
+  <section id="uslugi" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+      <h2 class="text-3xl font-semibold mb-12 text-gray-800">Zakres usług</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-4 text-indigo-700">Rozwody i separacje</h3>
+          <p class="text-gray-600">Kompleksowe prowadzenie spraw rozwodowych — z orzekaniem o winie lub bez, z zachowaniem pełnej dyskrecji.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-4 text-indigo-700">Alimenty i kontakty</h3>
+          <p class="text-gray-600">Pomoc w ustaleniu wysokości alimentów, kontaktów z dzieckiem i zakresu władzy rodzicielskiej.</p>
+        </div>
+        <div class="bg-white rounded-xl shadow-md p-8 hover:shadow-xl transition">
+          <h3 class="text-xl font-semibold mb-4 text-indigo-700">Podział majątku</h3>
+          <p class="text-gray-600">Rzetelne ustalenie wartości składników majątku i reprezentacja przed sądem w postępowaniach majątkowych.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt" class="py-20 bg-white text-center">
+    <h2 class="text-3xl font-semibold mb-6 text-gray-800">Kontakt</h2>
+    <p class="mb-4 text-gray-600">ul. Kilińskiego 11A lok. 6, 87-800 Włocławek</p>
+    <p class="mb-4 text-gray-600">📞 <a href="tel:+48727397007" class="text-indigo-700 font-medium">+48 727 397 007</a></p>
+    <a href="mailto:kontakt@praworodzinne.pl" class="text-indigo-700 font-medium hover:underline">kontakt@praworodzinne.pl</a>
+  </section>
+
+  <!-- STOPKA -->
+  <footer class="bg-gray-800 text-gray-300 py-6 text-center text-sm">
+    © 2025 Kancelaria Radcy Prawnego Małgorzata Krępeć-Kowalska. Wszelkie prawa zastrzeżone.
+  </footer>
+
+  <!-- JS Slider + Menu -->
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let current = 0;
+    function showSlide(next) {
+      slides[current].classList.remove('active');
+      slides[current].classList.add('exiting');
+      setTimeout(() => slides[current].classList.remove('exiting'), 1000);
+      slides[next].classList.add('active');
+      current = next;
+    }
+    setInterval(() => {
+      let next = (current + 1) % slides.length;
+      showSlide(next);
+    }, 6000);
+
+    // Hamburger
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuToggle.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      mobileMenu.classList.toggle('animate-fadeIn');
+    });
+  </script>
+</body>
+</html>
