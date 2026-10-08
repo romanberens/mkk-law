@@ -1,0 +1,56 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: mkk_law_web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+    networks:
+      - internal
+      - traefik_net
+    read_only: true
+    tmpfs:
+      - /tmp:size=64m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    mem_limit: 512m
+    mem_reservation: 256m
+    cpus: 1.0
+    pids_limit: 200
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://127.0.0.1:3000/api/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+    labels:
+      traefik.enable: "true"
+      traefik.docker.network: "traefik_net"
+      traefik.http.routers.mkk-law-http.rule: "Host(`radcawewloclawku.onenetworks.pl`)"
+      traefik.http.routers.mkk-law-http.entrypoints: "web"
+      traefik.http.routers.mkk-law-http.middlewares: "mkk-law-https"
+      traefik.http.middlewares.mkk-law-https.redirectscheme.scheme: "https"
+      traefik.http.routers.mkk-law.rule: "Host(`radcawewloclawku.onenetworks.pl`)"
+      traefik.http.routers.mkk-law.entrypoints: "websecure"
+      traefik.http.routers.mkk-law.tls: "true"
+      traefik.http.routers.mkk-law.tls.certresolver: "le"
+      traefik.http.routers.mkk-law.middlewares: "mkk-law-security"
+      traefik.http.middlewares.mkk-law-security.headers.contenttypenosniff: "true"
+      traefik.http.middlewares.mkk-law-security.headers.framedeny: "true"
+      traefik.http.middlewares.mkk-law-security.headers.referrerpolicy: "strict-origin-when-cross-origin"
+      traefik.http.middlewares.mkk-law-security.headers.stsincludesubdomains: "true"
+      traefik.http.middlewares.mkk-law-security.headers.stspreload: "true"
+      traefik.http.middlewares.mkk-law-security.headers.stsseconds: "31536000"
+      traefik.http.services.mkk-law.loadbalancer.server.port: "3000"
+
+networks:
+  internal:
+    internal: true
+  traefik_net:
+    external: true
