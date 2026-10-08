@@ -1,4 +1,5 @@
 import ContactForm from "./ui/contact-form";
+import SiteHeader from "./ui/site-header";
 
 const services = [
   ["Rozwody", "Pomoc w przygotowaniu dokumentów, negocjacjach i reprezentacji przed sądem."],
@@ -7,15 +8,24 @@ const services = [
   ["Mediacje", "Poszukiwanie rozwiązań pozwalających ograniczyć czas, koszty i stres związany ze sporem."],
 ];
 
+const steps = [
+  ["01", "Pierwsza rozmowa", "Krótko opisujesz sytuację. Ustalamy, czy i w jakim zakresie kancelaria może pomóc."],
+  ["02", "Analiza sprawy", "Po zapoznaniu się z informacjami otrzymujesz jasne omówienie możliwych działań i ryzyk."],
+  ["03", "Ustalenie strategii", "Wspólnie wybieramy rozwiązanie: negocjacje, mediację lub postępowanie sądowe."],
+  ["04", "Prowadzenie sprawy", "Otrzymujesz informacje o kolejnych krokach i wsparcie na każdym etapie."],
+];
+
+const faq = [
+  ["Czy przesłanie formularza oznacza przyjęcie sprawy?", "Nie. Formularz służy do pierwszego kontaktu. Przyjęcie sprawy wymaga sprawdzenia możliwości jej prowadzenia i odrębnego uzgodnienia warunków współpracy."],
+  ["Czy w formularzu należy opisać wszystkie szczegóły?", "Nie. Wystarczy krótki, ogólny opis. Nie przesyłaj dokumentów, numerów identyfikacyjnych ani szczególnie wrażliwych danych."],
+  ["Czy każda sprawa musi trafić do sądu?", "Nie zawsze. W zależności od sytuacji możliwe bywają negocjacje lub mediacja. Właściwa droga jest dobierana po analizie konkretnej sprawy."],
+  ["Jak przygotować się do pierwszej rozmowy?", "Warto spisać najważniejsze daty, osoby i dotychczasowe działania. Lista dokumentów potrzebnych do dalszej analizy zostanie ustalona indywidualnie."],
+];
+
 export default function Home() {
   return (
     <main>
-      <header className="nav">
-        <a className="brand" href="#start">MKK</a>
-        <nav aria-label="Główna nawigacja">
-          <a href="#o-kancelarii">O kancelarii</a><a href="#uslugi">Zakres pomocy</a><a href="#kontakt">Kontakt</a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="start">
         <div className="hero-copy">
@@ -35,6 +45,16 @@ export default function Home() {
       <section className="section services" id="uslugi">
         <p className="eyebrow">Zakres pomocy</p><h2>Sprawy rodzinne</h2>
         <div className="service-grid">{services.map(([title, text], index) => <article key={title}><span>0{index + 1}</span><h3>{title}</h3><p>{text}</p></article>)}</div>
+      </section>
+
+      <section className="section process" id="wspolpraca">
+        <div className="section-heading"><p className="eyebrow">Jak wygląda współpraca</p><h2>Wiesz, co dzieje się dalej</h2><p>Przejrzysty proces pomaga uporządkować sytuację i podejmować świadome decyzje.</p></div>
+        <ol className="process-grid">{steps.map(([number, title, text]) => <li key={number}><span>{number}</span><h3>{title}</h3><p>{text}</p></li>)}</ol>
+      </section>
+
+      <section className="section faq" id="faq">
+        <div className="section-heading"><p className="eyebrow">Najczęstsze pytania</p><h2>Zanim się skontaktujesz</h2></div>
+        <div className="faq-list">{faq.map(([question, answer]) => <details key={question}><summary>{question}<span aria-hidden="true">+</span></summary><p>{answer}</p></details>)}</div>
       </section>
 
       <section className="section contact" id="kontakt">
